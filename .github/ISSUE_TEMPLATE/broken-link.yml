@@ -1,0 +1,33 @@
+name: 报告失效链接
+description: 报告一个失效的链接或资源
+title: '[失效链接]: '
+labels: ['broken-link']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢您帮助我们维护资源的有效性！
+  - type: input
+    id: link
+    attributes:
+      label: 失效链接
+      description: 请提供失效的链接地址
+      placeholder: https://example.com
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: 链接位置
+      description: 该链接在仓库中的位置（文件名和章节）
+      placeholder: README.md 中的 React 生态系统部分
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: 问题描述
+      description: 请描述您遇到的具体问题
+      placeholder: 链接无法访问/返回 404/内容已迁移等
+    validations:
+      required: true

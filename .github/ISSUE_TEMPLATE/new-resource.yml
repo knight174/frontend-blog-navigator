@@ -1,0 +1,58 @@
+name: 提交新资源
+description: 提交新的博客或 Twitter 账号
+title: '[新资源]: '
+labels: ['new-resource']
+body:
+  - type: dropdown
+    id: resource-type
+    attributes:
+      label: 资源类型
+      description: 请选择要提交的资源类型
+      options:
+        - 官方博客
+        - Twitter 账号
+        - 其他
+    validations:
+      required: true
+  - type: input
+    id: resource-link
+    attributes:
+      label: 资源链接
+      description: 请提供资源的完整 URL
+      placeholder: https://blog.example.com 或 https://twitter.com/username
+    validations:
+      required: true
+  - type: input
+    id: resource-name
+    attributes:
+      label: 资源名称
+      description: 博客名称或 Twitter 账号名称
+      placeholder: React 官方博客 或 @reactjs
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: 所属分类
+      description: 该资源属于哪个技术分类
+      options:
+        - React 生态系统
+        - Vue 生态系统
+        - Node.js 生态系统
+        - 构建工具
+        - JavaScript/TypeScript
+        - 状态管理
+        - CSS 相关
+        - Web 标准与浏览器
+        - 前端技术专家
+        - 其他
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: 资源说明
+      description: 请简要说明为什么这个资源值得收录
+      placeholder: 这个资源的特点和价值...
+    validations:
+      required: true

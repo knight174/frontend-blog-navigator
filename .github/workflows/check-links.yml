@@ -1,0 +1,44 @@
+name: Check Links
+
+on:
+  schedule:
+    - cron: '0 0 * * 0' # 每周日运行
+  workflow_dispatch: # 允许手动触发
+  push:
+    branches:
+      - main
+    paths:
+      - '**/*.md'
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install markdown-link-check
+        run: npm install -g markdown-link-check
+
+      - name: Check Links
+        run: |
+          find . -name \*.md -exec markdown-link-check -c .github/workflows/mlc_config.json {} \;
+
+      - name: Create Issue on Failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.name,
+              title: '🔴 Broken links detected',
+              body: 'The link checker has detected broken links. Please check the workflow logs for details.',
+              labels: ['broken-links']
+            });

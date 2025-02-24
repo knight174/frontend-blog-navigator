@@ -1,0 +1,7 @@
+remote_theme: pages-themes/cayman@v0.2.0
+plugins:
+  - jekyll-remote-theme
+title: Frontend Blog Navigator
+description: 前端技术博客与社交媒体导航
+show_downloads: true
+google_analytics: [Your tracking ID] # 可选
