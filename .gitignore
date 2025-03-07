@@ -1,0 +1,11 @@
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
+.DS_Store
+.idea
+.vscode
+.vscode-server
+.vscode-server-insiders
+.vscode-server-insiders-files

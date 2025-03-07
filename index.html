@@ -6,12 +6,12 @@ title: Frontend Blog Navigator
 <div class="container">
   <h1>Frontend Blog Navigator</h1>
   <p>欢迎访问前端技术博客与社交媒体导航！</p>
-  
+
   {% if site.show_downloads %}
   <p>
-    你可以在 <a href="{{ site.github.repository_url }}">GitHub 仓库</a> 查看源代码。
+    你可以在
+    <a href="{{ site.github.repository_url }}">GitHub 仓库</a> 查看源代码。
   </p>
-  {% endif %}
-
-  {% include_relative README.md %}
+  {% endif %} {{ content }} {% capture readme %} {% include_relative README.md
+  %} {% endcapture %} {{ readme | markdownify }}
 </div>
