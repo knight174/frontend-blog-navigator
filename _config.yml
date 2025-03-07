@@ -1,8 +1,19 @@
 title: Frontend Blog Navigator
 description: 前端技术博客与社交媒体导航
 remote_theme: pages-themes/cayman@v0.2.0
+
+# Jekyll 配置
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
 plugins:
   - jekyll-remote-theme
+  - jemoji
+  - jekyll-sitemap
+  - jekyll-mentions
+  - jekyll-github-metadata
 
 # 添加仓库信息
 repository: knight174/frontend-blog-navigator
