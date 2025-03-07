@@ -31,6 +31,9 @@ jobs:
           ruby-version: '2.6.10'
           bundler-cache: true
 
+      - name: Update RubyGems
+        run: gem update --system
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
