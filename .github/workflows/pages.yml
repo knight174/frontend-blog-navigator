@@ -2,7 +2,7 @@ name: Deploy to Pages
 
 on:
   push:
-    branches: ["main"]
+    branches: ['main']
   workflow_dispatch:
 
 permissions:
@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: 'pages'
   cancel-in-progress: true
 
 jobs:
@@ -20,20 +20,20 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2'
+          ruby-version: '2.6.10'
           bundler-cache: true
-      
+
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      
+
       - name: Build with Jekyll
         run: |
           bundle install
@@ -42,12 +42,12 @@ jobs:
           JEKYLL_ENV: production
           PAGES_REPO_NWO: knight174/frontend-blog-navigator
           JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: '_site'
-      
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
